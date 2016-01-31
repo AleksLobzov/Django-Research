@@ -1,13 +1,18 @@
-from django.http import HttpResponse
+#from django.template.loader import get_template
+#from django.template import Template, Context
+#from django.http import HttpResponse
+from django.shortcuts import render_to_response
 import datetime
 
+
+#returns web-page with current date and time
 def current_datetime(request):
   now = datetime.datetime.now()
-  html = '<html><body>It is now %s.</body></html>' % now
-  return HttpResponse(html)
+  return render_to_response('now.html', { 'now': now })
 
+
+#returns web-page with current date and time increased by ‘offset’ hours
 def hours_ahead(request, offset):
   offset = int(offset)
-  dt = datetime.datetime.now() + datetime.timedelta(hours=offset)
-  html = '<html><body>In %s hour(s), it will be %s.</body></html>' % (offset, dt)
-  return HttpResponse(html)
+  date_computed = datetime.datetime.now() + datetime.timedelta(hours=offset)
+  return render_to_response('now_plus.html', { 'offset': offset, 'date_computed': date_computed })
