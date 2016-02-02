@@ -14,6 +14,11 @@ class Publisher(models.Model):
 
   class Meta:
     ordering = ['name']
+  
+  class ModelAdmin:
+    list_display = ('name', 'website')
+    filter_vertical = ('city', 'country')
+    search_fields = ('name')
 
 #An Author class
 class Author(models.Model):
@@ -25,6 +30,9 @@ class Author(models.Model):
   
   def __str__(self):
     return '%s %s' % (self.first_name, self.last_name)
+  
+  class ModelAdmin:
+    pass
 
 #A Book class
 class Book(models.Model):
@@ -35,3 +43,9 @@ class Book(models.Model):
 
   def __str__(self):
     return self.title
+  
+  class ModelAdmin:
+    list_display = ('title', 'publisher', 'publication_date')
+    filter_vertical = ('publisher', 'publication_date')
+    ordering = ('-publication_date')
+    search_fields = ('name')
