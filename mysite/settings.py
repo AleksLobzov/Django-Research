@@ -57,7 +57,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': ['/Users/apple/Desktop/Django/djcode/mysite/mysite/Templates',
-                 '/Users/apple/Desktop/Django/djcode/mysite/books/admin'],
+                 '/Users/apple/Desktop/Django/djcode/mysite/books/admin',
+                 '/Users/apple/Desktop/Django/djcode/mysite/books/Templates',
+],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

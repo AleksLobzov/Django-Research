@@ -16,9 +16,12 @@ Including another URLconf
 from django.conf.urls import patterns, url
 from django.contrib import admin
 from mysite.views import current_datetime, hours_ahead
+from books import views
 
 urlpatterns = patterns('',
   (r'^time/$', current_datetime),
   (r'^time/plus/(\d{1,2})/$', hours_ahead),
   (r'^admin/', admin.site.urls),
+  (r'^search/$', views.search),
+  (r'^contacts/$', views.contact),
 )
