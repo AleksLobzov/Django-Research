@@ -1,0 +1,6 @@
+<h1>{{ book.title }}</h1>
+{% load staticfiles %}
+{% static '' as baseUrl %}
+<img src="{{ baseUrl }}{{ book.logo }}" height='420'>
+<p>Publisher: {{ book.publisher }}</p>
+<p>Publication date: {{ book.publication_date }}</p>

@@ -1,6 +1,6 @@
 from django.db import models
 
-# A Publisher class
+
 class Publisher(models.Model):
   name = models.CharField(max_length=30)
   address = models.CharField(max_length=50)
@@ -20,13 +20,13 @@ class Publisher(models.Model):
     filter_vertical = ('city', 'country')
     search_fields = ('name')
 
-#An Author class
+
 class Author(models.Model):
   salutation = models.CharField(max_length=10)
   first_name = models.CharField(max_length=30)
   last_name = models.CharField(max_length=40)
   email = models.EmailField()
-  headshot = models.ImageField(upload_to='/tmp')
+  headshot = models.ImageField(null=True)
   
   def __str__(self):
     return '%s %s' % (self.first_name, self.last_name)
@@ -34,12 +34,13 @@ class Author(models.Model):
   class ModelAdmin:
     pass
 
-#A Book class
+
 class Book(models.Model):
   title = models.CharField(max_length=100)
   authors = models.ManyToManyField(Author)
   publisher = models.ForeignKey(Publisher)
   publication_date = models.DateField()
+  logo = models.ImageField(null=True)
 
   def __str__(self):
     return self.title
