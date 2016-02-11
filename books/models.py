@@ -8,6 +8,7 @@ class Publisher(models.Model):
   state_province = models.CharField(max_length=30)
   country = models.CharField(max_length=50)
   website = models.URLField()
+  descripsion = models.CharField(max_length=200, null=True)
   
   def __str__(self):
     return self.name
@@ -41,6 +42,7 @@ class Book(models.Model):
   publisher = models.ForeignKey(Publisher)
   publication_date = models.DateField()
   logo = models.ImageField(null=True)
+  vote = models.IntegerField(default=0)
 
   def __str__(self):
     return self.title

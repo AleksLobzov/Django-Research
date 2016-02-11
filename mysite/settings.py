@@ -56,9 +56,9 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/Users/apple/Desktop/Django/djcode/mysite/mysite/templates',
-                 '/Users/apple/Desktop/Django/djcode/mysite/books/admin',
-                 '/Users/apple/Desktop/Django/djcode/mysite/books/templates',
+        'DIRS': [os.path.join(BASE_DIR, 'mysite/templates'),
+                 os.path.join(BASE_DIR, 'books/admin'),
+                 os.path.join(BASE_DIR, 'books/templates'),
             ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -131,5 +131,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-  '/Users/apple/Desktop/Django/djcode/mysite/books/static/books/images'
+  os.path.join(BASE_DIR, 'books/static/books/images')
 ]

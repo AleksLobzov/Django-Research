@@ -1,0 +1,19 @@
+<html>
+<head>
+  <title>{{ book.title }}</title>
+</head>
+<body>
+  <p><a href={% url 'index' %}>Home</a></p>
+  <h1>{{ book.title }}</h1>
+  {% load staticfiles %} {% static '' as baseUrl %} 
+  <img src='{{ baseUrl }}{{ book.logo }}' heigh='420'>
+  <p>Publisher: {{ book.publisher }}</p>
+  <p>Publication date: {{ book.publication_date }}</p>
+  <p>
+    Authors: 
+      {% for author in book.authors.all %}
+        <a href={% url 'author_detail' author.id %}>{{ author }}</a>
+      {% endfor %}
+  </p>
+</body>
+</html>

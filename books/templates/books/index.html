@@ -1,9 +1,17 @@
-{% if latest_book_list %}
-  <ul>
-    {% for book in latest_book_list %}
-      <li><a href="{% url 'detail' book.id %}">{{ book.title }}</a></li>
-    {% endfor %}
-  </ul>
-{% else %}
-  <p>No books are available</p>
-{% endif %}
+<html>
+<head>
+  <title>Book catalogue</title>
+</head>
+<body>
+  <h1>Books in catalogue</h1>
+  {% if latest_book_list %}
+    <ul>
+      {% for book in latest_book_list %}
+        <li><a href='{% url 'book_detail' book.id %}'>{{ book.title }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No books are available.</p>
+  {% endif %}
+</body>
+</html>

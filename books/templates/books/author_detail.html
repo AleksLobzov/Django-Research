@@ -1,0 +1,22 @@
+<html>
+<head>
+  <title>{{ author.first_name }} {{ author.last_name }}</title>
+</head>
+<body>
+  <p><a href={% url 'index' %}>Home</a></p>
+  <h1>{{ author.first_name }} {{ author.last_name }}</h1>
+  {% load staticfiles %} {% static '' as baseUrl %} 
+  <img src='{{ baseUrl }}{{ author.headshot }}' heigh='420'>
+  <p>
+    Books:
+      {% if books %}
+      <ul>
+        {% for book in books %}
+          <li><a href='{% url 'book_detail' book.id %}'>{{ book.title }}</a></li>
+        {% endfor %}
+      {% else %}
+        <p>No books available.</p>
+      {% endif %}
+  </p>
+</body>
+</html>
