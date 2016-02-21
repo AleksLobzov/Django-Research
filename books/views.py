@@ -2,6 +2,10 @@ from django.shortcuts import get_object_or_404, render
 
 from .models import Book, Author, Publisher
 
+from django.http import HttpResponse
+
+import json
+
 
 def index(request):
   latest_book_list = Book.objects.order_by('-publication_date')[:10]
@@ -22,3 +26,7 @@ def author_detail(request, author_id):
   books = Book.objects.all().filter(authors=author)
   return render(request, 'books/author_detail.html', {'author': author, 'books': books})
 
+def chart1_data(request):
+  a = [{'key':str(author),'value':len(Book.objects.all().filter(authors=author))} for author in Author.objects.all()]
+  json_data = json.dumps(a)
+  return HttpResponse(json_data, content_type='application/json')

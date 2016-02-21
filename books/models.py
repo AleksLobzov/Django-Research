@@ -1,5 +1,6 @@
 from django.db import models
 
+import os
 
 class Publisher(models.Model):
   name = models.CharField(max_length=30)
@@ -27,7 +28,7 @@ class Author(models.Model):
   first_name = models.CharField(max_length=30)
   last_name = models.CharField(max_length=40)
   email = models.EmailField()
-  headshot = models.ImageField(null=True)
+  headshot = models.ImageField(upload_to='books/static/books/images/', null=True)
   
   def __str__(self):
     return '%s %s' % (self.first_name, self.last_name)
@@ -41,7 +42,7 @@ class Book(models.Model):
   authors = models.ManyToManyField(Author)
   publisher = models.ForeignKey(Publisher)
   publication_date = models.DateField()
-  logo = models.ImageField(null=True)
+  logo = models.ImageField(upload_to='books/static/books/images/', null=True)
   vote = models.IntegerField(default=0)
 
   def __str__(self):

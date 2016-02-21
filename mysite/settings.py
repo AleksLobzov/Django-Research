@@ -131,5 +131,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-  os.path.join(BASE_DIR, 'books/static/books/images')
+  os.path.join(BASE_DIR, 'books/static/books/images'),
+  os.path.join(BASE_DIR, 'books/static/books/javascript'),
 ]

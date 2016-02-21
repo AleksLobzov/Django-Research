@@ -3,6 +3,9 @@
   <title>Book catalogue</title>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="http://code.highcharts.com/highcharts.js"></script>
+
+  <script src="/static/books/javascript/charts.js"></script>
+
 </head>
 <body>
   <h1>Books in catalogue</h1>
@@ -16,31 +19,45 @@
     <p>No books are available.</p>
   {% endif %}
 
-  <div id="container" style="width: 550px; height: 400px; margin: 0 auto"></div>
-  <script language="JavaScript">
-    
+  </br>
+  </br>
+  </br>
+
+  <table>
+    <tr>
+      <td width='50%'>
+        <div id='con1' style='width: 550px; height: 400px; margin: 0 auto'></div>
+      </td>
+      <td width='50%'>
+        <div id='container' style='width: 550px; height: 400px; margin: 0 auto'></div>
+      </td>
+    </tr>
+  </table>
+
+  <script language='JavaScript'>
+
     $(document).ready(function() {
 
       var title = {
-        text: 'Books by Publisher'   
+        text: 'Books by Publisher'
       };
-      
+
       var series = [{
         type: 'pie',
-        name: 'books per.',
+        name: 'books no.',
         data: [
-          
+
           {% for publisher, book_count in book_by_publisher_piechart_data %}
             ['{{ publisher|safe }}', {{ book_count|safe }}],
           {% endfor %}
-          
+
         ]
       }];
-      
+
       var tooltip = {
-        pointFormat: '{series.name}: <b>{point.y:.1f}</b>'
+        pointFormat: '{series.name}: <b>{point.y}</b>'
       };
-      
+
       var plotOptions = {
         pie: {
           dataLabels: {
@@ -62,9 +79,15 @@
       json.tooltip = tooltip;
       json.plotOptions = plotOptions;
       json.credits = credits;
-
+      
       $('#container').highcharts(json)
     });
   </script>
+<footer>
+  <address>
+    Posted by <a href='mailto:aleks.lobzov@gmail.com'>Alexey Lobzov</a><br>
+    Source code at <a href='https://github.com/AleksLobzov/Django-Research'>GitHub</a>
+  </address>
+</footer>
 </body>
 </html>
