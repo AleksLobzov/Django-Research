@@ -5,6 +5,7 @@
   <script src="http://code.highcharts.com/highcharts.js"></script>
 
   <script src="/static/books/javascript/charts.js"></script>
+  <script src="/static/books/javascript/chart3.js"></script>
 
 </head>
 <body>
@@ -23,6 +24,18 @@
   </br>
   </br>
 
+  <script>
+    chart3_data = {'x': [
+    {% for author, book_count in chart3_data %}
+      ['{{ author|safe }}'],
+    {% endfor %}] ,
+    'y': [
+    {% for author, book_count in chart3_data %}
+      [{{ book_count|safe }}],
+    {% endfor %}]
+    };
+  </script>
+
   <table>
     <tr>
       <td width='50%'>
@@ -30,6 +43,11 @@
       </td>
       <td width='50%'>
         <div id='container' style='width: 550px; height: 400px; margin: 0 auto'></div>
+      </td>
+    </tr>
+    <tr>
+      <td width='100%'>
+        <div id='chart3' style='width: 550px; height: 400px; margin: 0 auto'></div>
       </td>
     </tr>
   </table>

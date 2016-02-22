@@ -10,9 +10,17 @@ import json
 def index(request):
   latest_book_list = Book.objects.order_by('-publication_date')[:10]
   
+
+  def getKey(item):
+    return item[1]
+
+  data = [[a, len(Book.objects.all().filter(authors=a))] for a in Author.objects.all()]
+  sorted_data = sorted(data, key=getKey, reverse=True)
+  chart3_data = sorted_data[:3]
+
   book_by_publisher_piechart_data = [[str(publisher), len(Book.objects.all().filter(publisher=publisher))] for publisher in Publisher.objects.all()]
   
-  context = {'latest_book_list': latest_book_list, 'book_by_publisher_piechart_data': book_by_publisher_piechart_data}
+  context = {'latest_book_list': latest_book_list, 'book_by_publisher_piechart_data': book_by_publisher_piechart_data, 'chart3_data': chart3_data}
   return render(request, 'books/index.html', context)
 
 
