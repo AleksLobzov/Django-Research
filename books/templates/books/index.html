@@ -4,7 +4,7 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="http://code.highcharts.com/highcharts.js"></script>
 
-  <script src="/static/books/javascript/charts.js"></script>
+  <script src="/static/books/javascript/chart2.js"></script>
   <script src="/static/books/javascript/chart3.js"></script>
 
 </head>
@@ -39,10 +39,10 @@
   <table>
     <tr>
       <td width='50%'>
-        <div id='con1' style='width: 550px; height: 400px; margin: 0 auto'></div>
+        <div id='chart1' style='width: 550px; height: 400px; margin: 0 auto'></div>
       </td>
       <td width='50%'>
-        <div id='container' style='width: 550px; height: 400px; margin: 0 auto'></div>
+        <div id='chart2' style='width: 550px; height: 400px; margin: 0 auto'></div>
       </td>
     </tr>
     <tr>
@@ -98,7 +98,7 @@
       json.plotOptions = plotOptions;
       json.credits = credits;
       
-      $('#container').highcharts(json)
+      $('#chart1').highcharts(json)
     });
   </script>
 <footer>

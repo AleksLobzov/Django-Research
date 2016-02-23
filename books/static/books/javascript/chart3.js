@@ -5,7 +5,7 @@ $(document).ready(function() {
     };
 
     var xAxis = {
-      categories: chart3_data['x'].toString().split(','),
+      categories: chart3_data['x'],
       title: {
         text: null
       }
@@ -37,7 +37,7 @@ $(document).ready(function() {
     var series = [{
       type: 'bar',
       name: 'book no.',
-      data: chart3_data['y'].toString().split(',').map(Number)
+      data: chart3_data['y']
     }];
 
     var credits = {

@@ -47,7 +47,7 @@ $( document ).ready(function() {
     json.plotOptions = plotOptions;
     json.credits = credits;
 
-    $('#con1').highcharts(json);
+    $('#chart2').highcharts(json);
 
   });
 
