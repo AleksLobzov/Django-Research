@@ -22,7 +22,7 @@ $( document ).ready(function() {
       }];
 
     var tooltip = {
-        pointFormat: '<b>{point.y}</b>'
+        pointFormat: 'books no.: <b>{point.y}</b>'
       };
 
     var plotOptions = {
